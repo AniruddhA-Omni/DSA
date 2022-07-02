@@ -49,8 +49,44 @@ void dup(){
     } //O(n)
 }
 
+// finding anagrams in string
+
+void ana(){
+    char A[] = "decimal";
+    char B[] = "mdeical";
+    int i, H[26] = {0};
+     for(i = 0; A[i] != '\0'; i++){
+        H[A[i] - 'a'] += 1;
+     } //O(n)
+    for(i = 0; B[i] != '\0'; i++){
+        H[B[i] - 'a'] -= 1;
+        if (H[B[i] - 'a'] < 0){
+            cout << "Strings are not anagrams" << endl;
+            return;
+        }
+    } //O(n)
+    cout << "Strings are anagrams" << endl;
+}
+
+//permutations of a string
+void perm(){
+    char A[] = "abc";
+    int i, j, k;
+    int n = sizeof(A) / sizeof(A[0]);
+    for(i = 0; i < n; i++){
+        for(j = 0; j < n; j++){
+            for(k = 0; k < n; k++){
+                cout << A[i] << A[j] << A[k] << endl;
+            }
+        }
+    }
+}
+
+
 
 int main(){
     dup();
+    ana();
+    perm();
     return 0;
 }
