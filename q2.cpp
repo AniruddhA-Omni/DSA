@@ -43,7 +43,7 @@ void CQueue::Display(){
         cout<<Q[i]<<" ";
         i = (i+1)%size;
     }while(i != (rear+1)%size);
-    
+
     cout<<endl;
 }
 
