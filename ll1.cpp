@@ -59,11 +59,55 @@ int Max(Node* p){
     }
 }
 
+void Insert(struct Node* p, int index,int x){
+    if (index < 0 || index >Count(p)) return;
+    struct Node* t = new Node;
+    t->data = x;
+    t->next = NULL;
+    if (index == 0){
+        t->next = first;
+        first = t;
+    }
+    else{
+        for(int i = 0; i < index-1; i++)
+            p = p->next;
+        t->next = p->next;
+        p->next = t;
+    }
+}
+
+void SortedInsert(struct Node* p, int x){
+    struct Node* t, *q = NULL;
+    t = new Node;
+    t->data = x;
+    t->next = NULL;
+    if(first == NULL){
+        first = t;
+    }else{
+        while(p && p->data < x){
+            q = p;
+            p = p->next;
+        }
+        if(p == first){
+            t->next = first;
+            first = t;
+        }else{
+            t->next = q->next;
+            q->next = t;
+        }
+    }
+}
+
+ 
+
+
 
 int main(){
     int A[] = {1, 2, 3, 4, 5}; 
     int n = sizeof(A)/sizeof(A[0]);
     create(A, n);
+    Display(first);
+    Insert(first, 2, 10);
     Display(first);
     return 0;
 }
