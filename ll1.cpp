@@ -98,8 +98,63 @@ void SortedInsert(struct Node* p, int x){
     }
 }
 
- 
+int Delete(struct Node* p, int index){
+    struct Node* q;
+    int x = -1;
+    if (index < 0 || index > Count(p)) return x;
+    if (index == 1){
+        q =first;
+        x = first->data;
+        first = first->next;
+        delete q;
+        return x;
+    }
+    else{
+        for(int i = 0; i < index-1; i++)
+            p = p->next;
+        q = p->next;
+        x = q->data;
+        p->next = q->next;
+        delete q;
+        return x;
+    }
+}
 
+int isSorted(struct Node* p){
+    int x = -652656;
+    while(p!= NULL){
+        if(p->data > x)
+            return 0;
+        x = p->data;
+        p = p->next;
+    }
+    return 1; 
+}
+
+void RemoveDup(struct Node* p){
+    struct Node* q= p->next;
+    while(q!=NULL){
+        if (p->data != q->data){
+            p =q;
+            q = q->next;
+        }else{
+            p->next = q->next;
+            delete q;
+            q = p->next;
+        }
+    }
+}
+
+void Reverse(struct Node* p){
+    p = first;
+    struct Node *q, *r;
+    while(p != NULL){
+        r = q;
+        q = p;
+        p = p->next;
+        q->next = r; 
+    }
+}
 
 
 int main(){
