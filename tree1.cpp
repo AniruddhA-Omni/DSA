@@ -72,7 +72,7 @@ public:
     void Inorder(Node *p);
     void Levelorder(){Levelorder(root);}
     void Levelorder(Node *p);
-    int Height(){return Height(root);}
+    int Heigth(){return Heigth(root);}
     int Heigth(Node *root);
 };
 
@@ -149,11 +149,12 @@ void Tree::Levelorder(struct Node *root){
     }
 }
 
-int Tree::Height(struct Node *root){
+int Tree::Heigth(struct Node *root){
     int x=0,y=0;
-    if(root==0) return 0;
-    x=Height(root->lchild);
-    y=Height(root->rchild);
+    if(root==0){
+        return 0;}
+    x=Heigth(root->lchild);
+    y=Heigth(root->rchild);
     if(x>y){
      return x+1;
     }else{
@@ -167,5 +168,11 @@ int main(){
     t.CreateTree();
     cout<<"Preorder ";
     t.Preorder();
+    cout<<endl;
+    cout<<"Inorder ";
+    t.Inorder();
+    cout<<endl;
+    cout<<"Postorder ";
+    t.Postorder();
     cout<<endl;
 }
