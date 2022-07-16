@@ -30,7 +30,7 @@ public:
 
 Node* Queue::dequeue(){
     Node *x = NULL;
-    if(front==-1){
+    if(front==rear){
         cout<<"Queue is empty"<<endl;
     }else{
     x = Q[front+1];
@@ -52,7 +52,7 @@ void Queue::Display(){
     cout<<endl;
 }
 bool Queue::isEmpty(){
-    if (front == -1){
+    if (front == rear){
         return true;
     }
     return false;
@@ -85,10 +85,11 @@ void Tree::CreateTree(){
     root->data = x;
     root->lchild = root->rchild = NULL;
     q.enqueue(root);
+    cout<<q.isEmpty();
     while(!q.isEmpty()){
         p = q.dequeue();
         cout<<"Enter Left child of "<<p->data<<": ";
-        cin>> x;
+        cin>>x;
         if(x != -1){
             t = new Node;
             t->data =x;
