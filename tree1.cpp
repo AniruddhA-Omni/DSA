@@ -85,7 +85,6 @@ void Tree::CreateTree(){
     root->data = x;
     root->lchild = root->rchild = NULL;
     q.enqueue(root);
-    cout<<q.isEmpty();
     while(!q.isEmpty()){
         p = q.dequeue();
         cout<<"Enter Left child of "<<p->data<<": ";
