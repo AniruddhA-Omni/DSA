@@ -161,6 +161,16 @@ int Tree::Heigth(struct Node *root){
     return y+1;}
 }
 
+int count(Node *p){
+    int x,y;
+    if (p != NULL){
+        x = count(p->lchild);
+        y = count(p->rchild);
+        if (p->lchild && p->rchild) return x+y+1;
+        return x+y;
+    }
+    return  0;
+}
 
 
 int main(){
