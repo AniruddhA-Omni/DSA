@@ -56,6 +56,53 @@ struct Node* Search(int key){
     return NULL;
 } 
 
+int Height(struct Node *p){
+    int x, y;
+    if (p==NULL) return 0;
+    x = Height(p->lchild);
+    y = Height(p->rchild);
+    return x>y?x+1:y+1;
+}
+
+struct Node* InPre(struct Node* p){
+    while(p && p->rchild != NULL)
+        p = p->rchild;
+    return p;
+}
+
+struct Node* InSuc(struct Node* p){
+    while(p && p->lchild != NULL)
+        p = p->lchild; 
+    return p;
+}
+
+struct Node *Delete(struct Node *p,int key){
+    struct Node *q;
+    if(p==NULL)
+        return NULL;
+    if(p->lchild==NULL && p->rchild==NULL){
+        if(p==root)
+            root=NULL;
+            free(p);
+            return NULL;
+    }if(key < p->data)
+        p->lchild=Delete(p->lchild,key);
+    else if(key > p->data)
+        p->rchild=Delete(p->rchild,key);
+    else{
+        if(Height(p->lchild)>Height(p->rchild)){
+            q=InPre(p->lchild);
+            p->data=q->data;
+            p->lchild=Delete(p->lchild,q->data);
+        }else{
+            q=InSuc(p->rchild);
+            p->data=q->data;
+            p->rchild=Delete(p->rchild,q->data);
+        }
+    }
+    return p;
+    }
+
 int main(){
     struct Node* temp;
     Insert(10);
@@ -69,8 +116,10 @@ int main(){
     temp = Search(20);
     cout<<endl;
     if (temp != NULL){
-        cout<<temp->data;
+        cout<<temp->data<<endl;
     }else{
-        cout<<"Not found";
+        cout<<"Not found"<<endl;
     }
+    Delete(root,77);
+    Inorder(root);
 }
