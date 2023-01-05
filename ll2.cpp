@@ -115,5 +115,7 @@ int main(){
     LinkedList l(A,5);
     l.Insert(3,10);
     l.Display();
+    int n = l.Delete(2);
+    l.Display();
     return 0;
 }
