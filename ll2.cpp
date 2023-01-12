@@ -111,6 +111,7 @@ int LinkedList::Delete(int index){
 
 
 int main(){
+    /*
     int A[]={1,2,3,4,5};
     LinkedList l(A,5);
     l.Insert(3,10);
@@ -118,4 +119,23 @@ int main(){
     int n = l.Delete(2);
     l.Display();
     return 0;
+    */
+    int A[100];
+    int n, p;
+    cout<<"Enter elements: ";
+    for (int i = 0; i < 10; i++){
+        cin>>n;
+        A[i] = n;
+    }
+    LinkedList l(A,10);
+    cout<<"Linked List: ";
+    l.Display();
+    cout<<"Enter number to be inserted: ";
+    cin>>n;
+    cout<<"Enter position: ";
+    cin>>p;
+    l.Insert(p,n);
+    cout<<"Linked List after inserting element: ";
+    l.Display();
+    
 }

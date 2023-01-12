@@ -1,14 +1,15 @@
 #include <iostream>
 using namespace std;
 
-struct Node{
+class Node{
+    public:
     int data;
     Node* next;
 } *head;
 
 void Create(int A[], int n){
     int i;
-    struct Node *t, *last;
+    Node *t, *last;
     head = new Node;
     head->data = A[0];
     head->next = head;
@@ -23,7 +24,7 @@ void Create(int A[], int n){
 }
 
 
-void Display(struct Node *p){
+void Display(Node *p){
     head = p;
     do{
         cout<<p->data<<" ";
@@ -32,7 +33,7 @@ void Display(struct Node *p){
     cout<<endl;
 }
 
-int Length(struct Node* p){
+int Length(Node* p){
     int len = 0;
     do{
         len++;
@@ -42,15 +43,15 @@ int Length(struct Node* p){
 }
 
 
-void Insert(struct Node* p, int index, int x){
-    struct Node* t;
+void Insert(Node* p, int index, int x){
+    Node* t;
     int i;
     if (index<0 || index > Length(head)) return;
     if (index == 0){
         t = new Node;
-         t->data =x;
+         t->data = x;
          if (head == NULL){
-            head =t;
+            head = t;
             head->next = head;
          }else{
             while(p->next != head) p = p->next;
@@ -61,17 +62,18 @@ void Insert(struct Node* p, int index, int x){
     }else{
         for(i = 0; i<index;i++){
             p = p->next;
+        }
             t = new Node;
             t->data = x;
             t->next = p->next;
             head = t;
-        }
+        
     }
 }
 // bugs in insert
 
-int Delete(struct Node* p, int index){
-    struct Node* q;
+int Delete(Node* p, int index){
+    Node* q;
     int i, x;
     if (index<0 || index > Length(head)) return -1;
     if (index == 1){
