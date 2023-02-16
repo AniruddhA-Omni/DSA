@@ -21,7 +21,7 @@ public:
 };
 
 int Queue::dequeue(){
-    if(front==-1){
+    if(rear==-1){
         cout<<"Queue is empty"<<endl;
         return -1;
     }
@@ -46,10 +46,23 @@ void Queue::Display(){
 
 
 int main(){
-    Queue q(5);
-    q.enqueue(69);
-    q.enqueue(13);
-    q.enqueue(6);
-    q.enqueue(9);
+    Queue q(6);
+    q.enqueue(4);
+    cout<<"Queue after enqueue is:";
+    q.Display();
+    q.enqueue(1);
+    cout<<"Queue after enqueue is:";
+    q.Display();
+    q.enqueue(3);
+    cout<<"Queue after enqueue is:";
+    q.Display();
+    q.dequeue();
+    cout<<"Queue after dequeue is:";
+    q.Display();
+    q.enqueue(8);
+    cout<<"Queue after enqueue is:";
+    q.Display();
+    q.dequeue();
+    cout<<"Queue after dequeue is:";
     q.Display();
 }

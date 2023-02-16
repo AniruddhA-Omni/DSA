@@ -22,7 +22,8 @@ public:
 void Queue::Enqueue(int x){
     Node* t = new Node;
     t->data = x;
-    if (rear == NULL){
+    t->next = NULL;
+    if ((rear == NULL) && (front == NULL)){
         front = rear = t;
         return;
     }
@@ -40,8 +41,7 @@ int Queue::Dequeue(){
     t = front;
     x = t->data;
     front = front->next;
-    if (front == NULL)
-        rear = NULL;
+    delete t;
     return x;
 }
 
@@ -60,10 +60,13 @@ int main(){
     q.Enqueue(20);
     q.Enqueue(30);
     q.Enqueue(40);
+    cout<<"Queue: ";
     q.Display();
-    cout<<q.Dequeue()<<endl;
-    //q.Display();
+    cout<<"Element deleted: "<<q.Dequeue()<<endl;
+    cout<<"Queue: ";
+    q.Display();
     q.Enqueue(69);
     q.Enqueue(13);
-    //q.Display();
+    cout<<"Queue: ";
+    q.Display();
 }

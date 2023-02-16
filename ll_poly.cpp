@@ -49,7 +49,7 @@ int main(){
     Node *head=new Node(5,2);
     Insert(head,4,1);
     Node *head2 = new Node(6,2);
-    Insert(head2,4,1);
+    Insert(head2,9,1);
     Display(head);
     cout<<endl;
     Display(head2);
