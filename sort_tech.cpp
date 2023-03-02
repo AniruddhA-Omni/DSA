@@ -1,4 +1,6 @@
 #include <iostream>
+#include <chrono>
+using namespace std::chrono;
 using namespace std;
 
 struct Node{
@@ -6,15 +8,20 @@ struct Node{
     Node* next = NULL;
 };
 
+// Miscellaneous funcitons
+void swap(int *x, int *y){
+    *x = *x ^ *y;
+    *y = *x ^ *y;
+    *x = *x ^ *y;
+}
 
+// Sorting Algorithms
 void BubbleSort(int A[], int n){
     for(int i = 0; i < n; i++){
         int flag = 0;
         for(int j = 0; j < n-i-1;j++){
             if(A[j] > A[j+1]){
-                A[j] = A[j] ^ A[j+1];
-                A[j+1] = A[j] ^ A[j+1];
-                A[j] = A[j] ^ A[j+1];
+                swap(A[j], A[j+1]);
                 flag = 1;
             }
         }
@@ -42,9 +49,7 @@ void SelectionSort(int A[], int n){
             if(A[j] < A[k])
                 k = j;
         }
-        A[k] = A[i] ^ A[k];
-        A[i] = A[k] ^ A[i];
-        A[k] = A[i] ^ A[k];
+        swap(A[i], A[k]);
     }
 }
 
@@ -55,14 +60,10 @@ int Partition(int A[],  int l, int h){
         do{i++;} while(A[i]<= pivot);
         do{j++;} while(A[j]> pivot);
         if (i < j){
-            A[j] = A[i] ^ A[j];
-            A[i] = A[j] ^ A[i];
-            A[j] = A[i] ^ A[j];
+            swap(A[i], A[j]);
         }
     }while(i<j);
-    A[j] = A[l] ^ A[j];
-    A[l] = A[j] ^ A[l];
-    A[j] = A[l] ^ A[j];
+    swap(A[l], A[j]);
     return j;
 }
 
@@ -213,8 +214,19 @@ void ShellSort(int A[], int n){
 int main(){
     int A[] = {30, 20, 15, 5, 10, 8, 12};
     int n = sizeof(A)/sizeof(A[0]);
-    ShellSort(A, n);
+
+    auto start = high_resolution_clock::now();
+    SelectionSort(A, n);
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<nanoseconds>(stop - start);
+
+    cout<<"Sorted Array: ";
     for(int i = 0; i < n; i++){
         cout << A[i] << " ";
     }
+    cout << endl;
+
+    cout << "Time taken by function: "
+         << duration.count() << " nanoseconds" << endl;
+
 }
