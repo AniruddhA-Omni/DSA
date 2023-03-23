@@ -54,24 +54,23 @@ void SelectionSort(int A[], int n){
 }
 
 int Partition(int A[],  int l, int h){
-    int pivot = A[l];
-    int i = l, j = h;
-    do{
-        do{i++;} while(A[i]<= pivot);
-        do{j++;} while(A[j]> pivot);
-        if (i < j){
+    int i = l-1;
+    int pivot = A[h];
+    for(int j = l; j < h; j++){
+        if(A[j] <= pivot){
+            i++;
             swap(A[i], A[j]);
         }
-    }while(i<j);
-    swap(A[l], A[j]);
-    return j;
+    }
+    swap(A[i+1], A[h]);
+    return i+1;
 }
 
 void QuickSort(int A[], int l, int h){
     int j;
     if(l<h){
         j = Partition(A,l,h);
-        QuickSort(A,l,j);
+        QuickSort(A,l,j-1);
         QuickSort(A, j+1, h);
     }
 }
