@@ -3,11 +3,11 @@ using namespace std;
 
 // A utility function that returns
 // maximum of two integers
-int max(int a, int b) { return (a > b) ? a : b; }
+float max(float a, float b) { return (a > b) ? a : b; }
 
 // Returns the maximum value that
 // can be put in a knapsack of capacity W
-int knapSack(int C, int wt[], int val[], int n){
+float knapSack(int C, int wt[], int val[], int n){
 	if (n == 0 || C == 0)
 		return 0;
 
@@ -23,9 +23,9 @@ int knapSack(int C, int wt[], int val[], int n){
 
 // Driver code
 int main(){
-	int profit[] = {9, 5, 2, 7, 6, 16, 3};
-	int weight[] = {2, 5, 6, 11, 1, 9, 1};
-	int C = 28; // Capacity of knapsack
+	int profit[] = {2,3,1,4};
+	int weight[] = {3,4,6,5};
+	int C = 8; // Capacity of knapsack
 	int n = sizeof(profit) / sizeof(profit[0]);
 	cout << knapSack(C, weight, profit, n);
 	return 0;
