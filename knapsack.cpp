@@ -23,9 +23,9 @@ float knapSack(int C, int wt[], int val[], int n){
 
 // Driver code
 int main(){
-	int profit[] = {2,3,1,4};
-	int weight[] = {3,4,6,5};
-	int C = 8; // Capacity of knapsack
+	int profit[] = {20, 5, 10, 40, 15, 25};
+	int weight[] = {1, 2, 3, 8, 7, 4};
+	int C = 10; // Capacity of knapsack
 	int n = sizeof(profit) / sizeof(profit[0]);
 	cout << knapSack(C, weight, profit, n);
 	return 0;
