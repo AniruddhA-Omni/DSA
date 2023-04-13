@@ -26,9 +26,9 @@ int max(int a, int b){
     }
 
     int main(){
-        int profit[] = {2,3,1,4};
-        int weight[] = {3,4,6,5};
-        int C = 8; // Capacity of knapsack
+        int profit[] = {30,40,45,77,90};
+        int weight[] = {5,10,15,22,25};
+        int C = 60; // Capacity of knapsack
         int n = sizeof(profit) / sizeof(profit[0]);
         cout << fractional_knapsack(C, weight, profit, n);
         return 0;

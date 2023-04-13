@@ -34,7 +34,7 @@ Node* newNode(int data){
     Node* node = (Node*)malloc(sizeof(Node));
     node->data = data;
     node->left = node->right = NULL;
-    return (node);
+    return node;
 }
   
 Node* insertLevelOrder(int arr[], int i, int n){
@@ -61,7 +61,7 @@ int main(){
     cout << endl;
     cout<<"Preorder: ";
     preorder(root);
-    cout << endl;
+    cout<< endl;
     cout<<"Postorder: ";
     postorder(root);
  
